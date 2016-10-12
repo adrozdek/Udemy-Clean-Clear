@@ -1245,8 +1245,11 @@ if (typeof jQuery === 'undefined') {
 
     $target.one('show.bs.modal', function (showEvent) {
       if (showEvent.isDefaultPrevented()) return // only register focus restorer if modal will actually get shown
+      var swidth=(window.innerWidth-$(window).width());
+      $(".navbar-default").css("padding-right", swidth);
       $target.one('hidden.bs.modal', function () {
         $this.is(':visible') && $this.trigger('focus')
+        $(".navbar-default").css("padding-right", "0px");
       })
     })
     Plugin.call($target, option, this)
